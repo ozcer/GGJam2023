@@ -11,7 +11,7 @@ public class Water : Resource
         if (captured) return;
         print("Water captured");
         captured = true;
-        ResourceManager.Instance.water += waterAmount;
+        ResourceManager.Instance.GainWater(waterAmount);
         HUDController.Instance.waterSliderTween.StopAll();
         HUDController.Instance.waterSliderTween.Pop();
         

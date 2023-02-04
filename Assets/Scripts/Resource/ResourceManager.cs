@@ -20,4 +20,13 @@ public class ResourceManager : Singleton<ResourceManager>
         }
     }
     
+    public void GainWater(int amount)
+    {
+        water += amount;
+        if (water > maxWater)
+        {
+            water = maxWater;
+        }
+    }
+    
 }

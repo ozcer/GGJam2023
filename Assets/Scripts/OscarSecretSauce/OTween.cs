@@ -24,6 +24,7 @@ public class OTween : MonoBehaviour
     {
         originalPosition = transform.localPosition;
         originalScale = transform.localScale;
+        if (isJittering) Jitter(true);
     }
 
     public void Jitter(bool force = false)
