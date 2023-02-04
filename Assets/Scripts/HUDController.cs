@@ -8,8 +8,6 @@ using UnityEngine.UI;
 
 public class HUDController : Singleton<HUDController>
 {
-    [SerializeField]
-    private RectTransform sliderRectTransform;
 
     [SerializeField]
     GameObject endGameCard;
@@ -32,7 +30,6 @@ public class HUDController : Singleton<HUDController>
     bool isWatering = false;
     public WateringCan wateringCan;
 
-    float originalMaxSliderSize;
     ResourceManager resourceManager;
     // Start is called before the first frame update
 
@@ -41,7 +38,6 @@ public class HUDController : Singleton<HUDController>
         resourceManager = ResourceManager.Instance;
         
         maxLengthValue = GameInstanceController.Instance.Mode.startingMaxLength;
-        originalMaxSliderSize = sliderRectTransform.sizeDelta.x;
         
         waterSliderTween = waterSlider.GetComponent<OTween>();
     }
