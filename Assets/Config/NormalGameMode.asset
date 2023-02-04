@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b0ace7949267144f9f00c369a5ba9ba, type: 3}
   m_Name: NormalGameMode
   m_EditorClassIdentifier: 
-  startingMaxLength: 0
-  winLength: 0
-  timeLimitSeconds: 0
+  startingMaxLength: 100
+  winLength: 300
+  timeLimitSeconds: 120
