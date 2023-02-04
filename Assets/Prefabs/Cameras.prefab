@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 2891194702563717625}
   - component: {fileID: 2891194702563717624}
   - component: {fileID: 2891194702563717627}
+  - component: {fileID: 2085151705}
   m_Layer: 0
   m_Name: MainCamera
   m_TagString: MainCamera
@@ -75,7 +76,7 @@ Camera:
   m_GameObject: {fileID: 2891194702563717626}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0.4745098, g: 0.21913745, b: 0.19215688, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -92,8 +93,8 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
-  orthographic size: 5
+  orthographic: 1
+  orthographic size: 20
   m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
@@ -117,6 +118,22 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2891194702563717626}
   m_Enabled: 1
+--- !u!114 &2085151705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2891194702563717626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6524d67e801a94a4ba8f265b6d1efae7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lerpSpeed: 0.1
+  targetPlayerTransform: {fileID: 0}
+  sufficientDistance: 300
+  cameraDampenFactor: 3
 --- !u!1 &2891194704510902265
 GameObject:
   m_ObjectHideFlags: 0
@@ -158,7 +175,7 @@ Camera:
   m_GameObject: {fileID: 2891194704510902265}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0.20727123, g: 0.4745098, b: 0.19215688, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2

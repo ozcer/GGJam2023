@@ -12,7 +12,9 @@ public class InputManager : MonoBehaviour
     [SerializeField]
     private GameObject _rootPrefab;
 
-    void Start()
+    Vector3 originalMousePos;
+
+    void Awake()
     {
         _cam = Camera.main;
     }
@@ -29,7 +31,7 @@ public class InputManager : MonoBehaviour
         {
             _cursorPos = ray.GetPoint(distance);
         }
-        
+
         if (Input.GetMouseButtonUp(0))
         {
             _selectedNode = null;
