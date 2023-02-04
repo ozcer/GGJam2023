@@ -27,7 +27,7 @@ public class OTween : MonoBehaviour
         if (isJittering) Jitter(true);
     }
 
-    public void Jitter(bool force = false)
+    public void Jitter(bool force = false, Action OnComplete = null)
     {
         if (isJittering && !force) return;
         isJittering = true;
@@ -40,7 +40,11 @@ public class OTween : MonoBehaviour
             destination + transform.localPosition, 
             jitterDuration)
             .setEase(jitterEase)
-            .setLoopPingPong(1).setOnComplete(() => { Jitter(true);});
+            .setLoopPingPong(1).setOnComplete(() =>
+            {
+                OnComplete?.Invoke();
+                Jitter(true, OnComplete);
+            });
     }
 
     public void Pop()

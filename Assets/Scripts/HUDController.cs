@@ -27,7 +27,11 @@ public class HUDController : Singleton<HUDController>
     public TextMeshProUGUI waterText;
     public Slider waterSlider;
     public OTween waterSliderTween;
-    
+    public SpriteRenderer wateringCanSprite;
+    public Vector3 wateringCanTilt = new Vector3(0, 0, 90);
+    bool isWatering = false;
+    public WateringCan wateringCan;
+
     float originalMaxSliderSize;
     ResourceManager resourceManager;
     // Start is called before the first frame update
@@ -76,6 +80,33 @@ public class HUDController : Singleton<HUDController>
         endGameCard.SetActive(true);
         endGameText.text = won ? "The plant grew :D" : "The plant died :(";
         GameInstanceController.Instance.EndGame();
+    }
+    
+    public void StartWatering()
+    {
+        if (isWatering) return;
+        isWatering = true;
+        
+        // waterSliderTween.Jitter();
+        wateringCanSprite.GetComponent<OTween>().Jitter(OnComplete: () =>
+        {
+            wateringCan.PourWater();
+        });
+        LeanTween.rotateLocal(
+            wateringCanSprite.gameObject, 
+            wateringCanTilt, 0.5f).
+            setEase(LeanTweenType.easeInOutQuad).
+            setLoopPingPong(1).setOnComplete(() =>
+            {
+                isWatering = false;
+            });
+    }
+    
+    public void StopWatering()
+    {
+        wateringCanSprite.transform.localRotation = Quaternion.identity;
+        wateringCanSprite.GetComponent<OTween>().StopAll();
+        isWatering = false;
     }
     
 }

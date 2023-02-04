@@ -45,7 +45,7 @@ public class InputManager : MonoBehaviour
         if (_selectedNode != null)
         {
             _selectedNode.MoveToward(_cursorPos);
-            HUDController.Instance.waterSliderTween.Jitter();
+            HUDController.Instance.StartWatering();
             if (!HUDController.Instance.HasRemainingLength())
             {
                 HUDController.Instance.EndGame(false);
@@ -54,7 +54,7 @@ public class InputManager : MonoBehaviour
         }
         else
         {
-            HUDController.Instance.waterSliderTween.StopAll();
+            HUDController.Instance.StopWatering();
         }
 
     }

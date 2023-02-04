@@ -15,6 +15,7 @@ public class Water : Resource
         HUDController.Instance.waterSliderTween.StopAll();
         HUDController.Instance.waterSliderTween.Pop();
         
-        CaptureAnimate();
+        Vector3 sliderWorldPos = Camera.main.ScreenToWorldPoint(HUDController.Instance.waterSlider.transform.position);
+        CaptureAnimate(sliderWorldPos);
     }
 }
