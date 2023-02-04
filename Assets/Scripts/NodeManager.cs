@@ -16,7 +16,7 @@ public class NodeManager : MonoBehaviour
     void Update()
     {
         Ray ray = _cam.ScreenPointToRay(Input.mousePosition);
-        Debug.DrawRay(ray.origin, ray.direction * 10, Color.yellow, 5);
+        Debug.DrawRay(ray.origin, ray.direction * 10, Color.yellow, 1);
         if (_plane.Raycast(ray, out float distance))
         {
             _cursorPos = ray.GetPoint(distance);
