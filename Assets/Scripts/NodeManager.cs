@@ -53,8 +53,6 @@ public class NodeManager : MonoBehaviour
             return null;
         }
 
-        Debug.Log(colliders.Length);
-
         var nearest = colliders[0];
         float minDistanceSquared = (nearest.transform.position - point).sqrMagnitude;
         for (int colliderIndex = 1; colliderIndex < colliders.Length; ++colliderIndex)
@@ -69,13 +67,17 @@ public class NodeManager : MonoBehaviour
 
         NodeMovementController movementController = nearest.gameObject.GetComponent<NodeMovementController>();
         if (movementController != null) {
-            Debug.Log(movementController.gameObject.name);
             return movementController;
         }
 
-        // assume that anything without a movement controller is a node
-        GameObject newRoot = Instantiate(_rootPrefab, nearest.transform.position, Quaternion.identity);
-        NodeMovementController newMovementController = newRoot.GetComponent<NodeMovementController>();
-        return newMovementController;
+        if (nearest.gameObject.CompareTag("RootNode"))
+        {
+            // assume that anything without a movement controller is a node
+            GameObject newRoot = Instantiate(_rootPrefab, nearest.transform.position, Quaternion.identity);
+            NodeMovementController newMovementController = newRoot.GetComponent<NodeMovementController>();
+            return newMovementController;
+        }
+
+        return null;
     }
 }
