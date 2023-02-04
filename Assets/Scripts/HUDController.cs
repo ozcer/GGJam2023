@@ -8,6 +8,12 @@ public class HUDController : Singleton<HUDController>
     [SerializeField]
     private RectTransform sliderRectTransform;
 
+    [SerializeField]
+    GameObject endGameCard;
+
+    [SerializeField]
+    TextMeshProUGUI endGameText;
+
     private float maxLengthValue;
 
     private Dictionary<int, float> currentLengths = new();
@@ -28,7 +34,7 @@ public class HUDController : Singleton<HUDController>
         return GetCurrentTotalLength()  < maxLengthValue;
     }
 
-    private float GetCurrentTotalLength()
+    public float GetCurrentTotalLength()
     {
         float currentTotalLength = 0;
         foreach (float length in currentLengths.Values)
@@ -44,4 +50,11 @@ public class HUDController : Singleton<HUDController>
         lengthIndicatorText.text = $"{(int)GetCurrentTotalLength()}/{(int)maxLengthValue} cm";
     }
 
+
+    public void EndGame(bool won)
+    {
+        endGameCard.SetActive(true);
+        endGameText.text = won ? "The plant grew :D" : "The plant died :(";
+        GameInstanceController.Instance.EndGame();
+    }
 }

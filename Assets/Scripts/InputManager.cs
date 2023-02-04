@@ -19,6 +19,10 @@ public class InputManager : MonoBehaviour
     
     void Update()
     {
+        if (GameInstanceController.Instance.GetGameEnded())
+        {
+            return;
+        }
         Ray ray = _cam.ScreenPointToRay(Input.mousePosition);
         Debug.DrawRay(ray.origin, ray.direction * 10, Color.yellow, 1);
         if (_plane.Raycast(ray, out float distance))
@@ -44,7 +48,7 @@ public class InputManager : MonoBehaviour
 
             if (!HUDController.Instance.HasRemainingLength())
             {
-                // Game over condition
+                HUDController.Instance.EndGame(false);
                 return;
             }
 

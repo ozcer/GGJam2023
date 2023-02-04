@@ -33,6 +33,11 @@ public class RootController : MonoBehaviour
     void Update()
     {
         float fullDistance = GetCurrentDistance();
+        if (HUDController.Instance.GetCurrentTotalLength() >= GameInstanceController.Instance.Mode.winLength)
+        {
+            HUDController.Instance.EndGame(true);
+            return;
+        }
         // TODO: check if reached target and trigger win condition
         HUDController.Instance.SetLength(fullDistance, rootId);
 

@@ -8,4 +8,14 @@ public class GameInstanceController : Singleton<GameInstanceController>
     [SerializeField]
     public GameMode Mode;
 
+    private bool gameEnded = false;
+    public void EndGame()
+    {
+        gameEnded = true;
+    }
+
+    public bool GetGameEnded()
+    {
+        return gameEnded;
+    }
 }
