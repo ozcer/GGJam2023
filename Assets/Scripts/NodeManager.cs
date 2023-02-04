@@ -8,6 +8,10 @@ public class NodeManager : MonoBehaviour
     Plane _plane = new(Vector3.forward, 0);
     Vector3 _cursorPos;
     NodeMovementController _selectedNode;
+
+    [SerializeField]
+    private GameObject _rootPrefab;
+
     void Start()
     {
         _cam = Camera.main;
@@ -26,9 +30,16 @@ public class NodeManager : MonoBehaviour
         {
             _selectedNode = null;
         }
-        else if (Input.GetMouseButton(0))
+        else if (Input.GetMouseButtonDown(0))
         {
-            if (!_selectedNode) _selectedNode = NearestNode(_cursorPos);
+            if (!_selectedNode)
+            {
+                _selectedNode = NearestNode(_cursorPos);
+            }
+        }
+
+        if (_selectedNode != null)
+        {
             _selectedNode.MoveToward(_cursorPos);
         }
         
@@ -36,18 +47,35 @@ public class NodeManager : MonoBehaviour
 
     NodeMovementController NearestNode(Vector3 point)
     {
-        NodeMovementController[] nodes = FindObjectsOfType<NodeMovementController>();
-        NodeMovementController nearest = null;
-        float minDistance = float.MaxValue;
-        foreach (NodeMovementController node in nodes)
+        var colliders = Physics.OverlapSphere(point, 5f); // TODO: move magic number
+        if (colliders.Length == 0)
         {
-            float distance = Vector3.Distance(point, node.transform.position);
-            if (distance < minDistance)
+            return null;
+        }
+
+        Debug.Log(colliders.Length);
+
+        var nearest = colliders[0];
+        float minDistanceSquared = (nearest.transform.position - point).sqrMagnitude;
+        for (int colliderIndex = 1; colliderIndex < colliders.Length; ++colliderIndex)
+        {
+            float newDistanceSquared = (colliders[colliderIndex].transform.position - point).sqrMagnitude;
+            if (newDistanceSquared < minDistanceSquared)
             {
-                minDistance = distance;
-                nearest = node;
+                minDistanceSquared = newDistanceSquared;
+                nearest = colliders[colliderIndex];
             }
         }
-        return nearest;
+
+        NodeMovementController movementController = nearest.gameObject.GetComponent<NodeMovementController>();
+        if (movementController != null) {
+            Debug.Log(movementController.gameObject.name);
+            return movementController;
+        }
+
+        // assume that anything without a movement controller is a node
+        GameObject newRoot = Instantiate(_rootPrefab, nearest.transform.position, Quaternion.identity);
+        NodeMovementController newMovementController = newRoot.GetComponent<NodeMovementController>();
+        return newMovementController;
     }
 }

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7607854546739939380}
   - component: {fileID: 4442511045735461410}
   - component: {fileID: 6700889698054843803}
-  - component: {fileID: 3578792987228592634}
+  - component: {fileID: 9174228120764099089}
   m_Layer: 0
   m_Name: Root
   m_TagString: Untagged
@@ -108,7 +108,7 @@ TrailRenderer:
         inWeight: 0.33333334
         outWeight: 0.11279569
       - serializedVersion: 3
-        time: 0.7095556
+        time: 0.9224615
         value: 1
         inSlope: 0
         outSlope: 0
@@ -154,7 +154,7 @@ TrailRenderer:
     textureMode: 3
     shadowBias: 0.5
     generateLightingData: 0
-  m_MinVertexDistance: 1.79
+  m_MinVertexDistance: 1
   m_Autodestruct: 0
   m_Emitting: 1
 --- !u!114 &4442511045735461410
@@ -183,7 +183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 30
---- !u!114 &3578792987228592634
+--- !u!114 &9174228120764099089
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -197,4 +197,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   newNodeSpawnDistance: 1
   resourceCaptureDistance: 1
-  nodePrefab: {fileID: 7607854546739939383}
+  nodePrefab: {fileID: 252039714140234917, guid: 4f0c73974702f0a4681d8c18a1dd9739, type: 3}

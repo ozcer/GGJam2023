@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Node : MonoBehaviour
+public class NodeSpawner : MonoBehaviour
 {
     public float newNodeSpawnDistance = 1f;
     public float resourceCaptureDistance = 1f;
