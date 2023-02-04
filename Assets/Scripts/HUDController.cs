@@ -1,8 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Oozeling.Helper;
+using UnityEngine.UI;
+
 public class HUDController : Singleton<HUDController>
 {
     [SerializeField]
@@ -19,14 +22,31 @@ public class HUDController : Singleton<HUDController>
     private Dictionary<int, float> currentLengths = new();
     [SerializeField]
     TextMeshProUGUI lengthIndicatorText;
-
+    
+    [Header("Water")]
+    public TextMeshProUGUI waterText;
+    public Slider waterSlider;
+    public OTween waterSliderTween;
+    
     float originalMaxSliderSize;
+    ResourceManager resourceManager;
     // Start is called before the first frame update
 
     void Start()
     {
+        resourceManager = ResourceManager.Instance;
+        
         maxLengthValue = GameInstanceController.Instance.Mode.startingMaxLength;
         originalMaxSliderSize = sliderRectTransform.sizeDelta.x;
+        
+        waterSliderTween = waterSlider.GetComponent<OTween>();
+    }
+
+    void Update()
+    {
+        // update water UI
+        // waterText.text = $"{resourceManager.water} water";
+        waterSlider.value = (float) resourceManager.water / resourceManager.maxWater;
     }
 
     public bool HasRemainingLength()
@@ -57,4 +77,5 @@ public class HUDController : Singleton<HUDController>
         endGameText.text = won ? "The plant grew :D" : "The plant died :(";
         GameInstanceController.Instance.EndGame();
     }
+    
 }

@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class Water : Resource
 {
-    bool _captured = false;
+    bool captured = false;
+    public int waterAmount = 20; // because H20 XDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
     public override void OnCapture()
     {
-        if (_captured) return;
+        if (captured) return;
         print("Water captured");
-        _captured = true;
+        captured = true;
+        ResourceManager.Instance.water += waterAmount;
+        HUDController.Instance.waterSliderTween.StopAll();
+        HUDController.Instance.waterSliderTween.Pop();
+        
         CaptureAnimate();
     }
 }

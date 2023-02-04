@@ -45,13 +45,16 @@ public class InputManager : MonoBehaviour
         if (_selectedNode != null)
         {
             _selectedNode.MoveToward(_cursorPos);
-
+            HUDController.Instance.waterSliderTween.Jitter();
             if (!HUDController.Instance.HasRemainingLength())
             {
                 HUDController.Instance.EndGame(false);
                 return;
             }
-
+        }
+        else
+        {
+            HUDController.Instance.waterSliderTween.StopAll();
         }
 
     }
