@@ -8,8 +8,7 @@ public class HUDController : Singleton<HUDController>
     [SerializeField]
     private RectTransform sliderRectTransform;
 
-    [SerializeField]
-    private float maxLengthValue = 300;
+    private float maxLengthValue;
 
     private Dictionary<int, float> currentLengths = new();
     [SerializeField]
@@ -20,6 +19,7 @@ public class HUDController : Singleton<HUDController>
 
     void Start()
     {
+        maxLengthValue = GameInstanceController.Instance.Mode.startingMaxLength;
         originalMaxSliderSize = sliderRectTransform.sizeDelta.x;
     }
 

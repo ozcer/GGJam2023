@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NodeManager : MonoBehaviour
+public class InputManager : MonoBehaviour
 {
     Camera _cam;
     Plane _plane = new(Vector3.forward, 0);
@@ -41,8 +41,15 @@ public class NodeManager : MonoBehaviour
         if (_selectedNode != null)
         {
             _selectedNode.MoveToward(_cursorPos);
+
+            if (!HUDController.Instance.HasRemainingLength())
+            {
+                // Game over condition
+                return;
+            }
+
         }
-        
+
     }
 
     NodeMovementController NearestNode(Vector3 point)

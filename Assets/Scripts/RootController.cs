@@ -35,11 +35,6 @@ public class RootController : MonoBehaviour
         float fullDistance = GetCurrentDistance();
         // TODO: check if reached target and trigger win condition
         HUDController.Instance.SetLength(fullDistance, rootId);
-        if (!HUDController.Instance.HasRemainingLength())
-        {
-            // Game over condition
-            return;
-        }
 
         if (trailRenderer.positionCount > scaleAfterCount)
         {
