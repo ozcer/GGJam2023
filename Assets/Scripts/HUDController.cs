@@ -11,7 +11,7 @@ public class HUDController : Singleton<HUDController>
     [SerializeField]
     private float maxLengthValue = 300;
 
-    private float currentLength = 0;
+    private Dictionary<int, float> currentLengths = new();
     [SerializeField]
     TextMeshProUGUI lengthIndicatorText;
 
@@ -25,12 +25,23 @@ public class HUDController : Singleton<HUDController>
 
     public bool HasRemainingLength()
     {
-        return currentLength < maxLengthValue;
+        return GetCurrentTotalLength()  < maxLengthValue;
     }
 
-    public void SetLength(float newLength)
+    private float GetCurrentTotalLength()
     {
-        lengthIndicatorText.text = $"{(int)newLength}/{(int)maxLengthValue} cm";
+        float currentTotalLength = 0;
+        foreach (float length in currentLengths.Values)
+        {
+            currentTotalLength += length;
+        }
+        return currentTotalLength;
+    }
+
+    public void SetLength(float newLength, int rootId)
+    {
+        currentLengths[rootId] = newLength;
+        lengthIndicatorText.text = $"{(int)GetCurrentTotalLength()}/{(int)maxLengthValue} cm";
     }
 
 }

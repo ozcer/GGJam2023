@@ -2,6 +2,18 @@ using UnityEngine;
 
 public class RootController : MonoBehaviour
 {
+    private class RootControllerIdGenerator
+    {
+        private static int m_autoIncrementId = 0;
+        public static int AutoIncrementId
+        {
+            get
+            {
+                return m_autoIncrementId++;
+            }
+        }
+    }
+
     [SerializeField]
     private TrailRenderer trailRenderer;
     AnimationCurve originalWidthCurve;
@@ -9,9 +21,11 @@ public class RootController : MonoBehaviour
 
     const int taperKeyFrameIndex = 1;
     const int scaleAfterCount = 6;
+    private int rootId;
 
     void Start()
     {
+        rootId = RootControllerIdGenerator.AutoIncrementId;
         originalWidthCurve = trailRenderer.widthCurve;
         originalTaperKeyframeTime = originalWidthCurve.keys[taperKeyFrameIndex].time;
     }
@@ -20,7 +34,7 @@ public class RootController : MonoBehaviour
     {
         float fullDistance = GetCurrentDistance();
         // TODO: check if reached target and trigger win condition
-        HUDController.Instance.SetLength(fullDistance);
+        HUDController.Instance.SetLength(fullDistance, rootId);
         if (!HUDController.Instance.HasRemainingLength())
         {
             // Game over condition
