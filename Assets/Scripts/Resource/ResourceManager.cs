@@ -8,25 +8,31 @@ using UnityEngine.UI;
 
 public class ResourceManager : Singleton<ResourceManager>
 {
-    public int water = 100;
-    public int maxWater = 100;
-    public int growthWaterCost = 1;
+    public float water;
+    public float growthWaterCost = 1;
 
-    public void GrowPlant()
+    private void Awake()
     {
-        if (water >= growthWaterCost)
+        water = (int) GameInstanceController.Instance.Mode.startingMaxLength / growthWaterCost;
+    }
+
+    public void GrowPlant(float deltaDistance)
+    {
+        if (GameInstanceController.Instance.GetGameEnded())
         {
-            water -= growthWaterCost;
+            return;
+        }
+        water -= deltaDistance / growthWaterCost;
+        Debug.Log(deltaDistance + " water");
+        if (water <= 0)
+        {
+            HUDController.Instance.EndGame(false);
         }
     }
     
     public void GainWater(int amount)
     {
         water += amount;
-        if (water > maxWater)
-        {
-            water = maxWater;
-        }
     }
     
 }

@@ -16,6 +16,9 @@ public class RootController : MonoBehaviour
 
     [SerializeField]
     private TrailRenderer trailRenderer;
+    [SerializeField]
+    bool isDecorative;
+
     AnimationCurve originalWidthCurve;
     float originalTaperKeyframeTime;
 
@@ -29,10 +32,14 @@ public class RootController : MonoBehaviour
         originalWidthCurve = trailRenderer.widthCurve;
         originalTaperKeyframeTime = originalWidthCurve.keys[taperKeyFrameIndex].time;
     }
-
+    float previousFullDistance = 0;
     void Update()
     {
         float fullDistance = GetCurrentDistance();
+        if (isDecorative)
+        {
+            return;
+        }
         if (HUDController.Instance.GetCurrentTotalLength() >= GameInstanceController.Instance.Mode.winLength)
         {
             HUDController.Instance.EndGame(true);
@@ -40,7 +47,14 @@ public class RootController : MonoBehaviour
         }
         // TODO: check if reached target and trigger win condition
         HUDController.Instance.SetLength(fullDistance, rootId);
+        Debug.Log("previous full " + previousFullDistance + " full " + fullDistance);
+        float delta = fullDistance - previousFullDistance;
+        previousFullDistance = fullDistance;
+        if (delta > 0.0001f)
+        {
+            ResourceManager.Instance.GrowPlant(delta);
 
+        }
         if (trailRenderer.positionCount > scaleAfterCount)
         {
             float intendedDistance = scaleAfterCount * trailRenderer.minVertexDistance;
@@ -52,6 +66,8 @@ public class RootController : MonoBehaviour
             trailRenderer.widthCurve = newCurve;
             //Debug.Log("TIME: " + trailRenderer.widthCurve.keys[1].time);
         }
+
+
     }
 
     float GetCurrentDistance()

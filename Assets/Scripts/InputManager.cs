@@ -48,11 +48,6 @@ public class InputManager : MonoBehaviour
         {
             _selectedNode.MoveToward(_cursorPos);
             HUDController.Instance.StartWatering();
-            if (!HUDController.Instance.HasRemainingLength())
-            {
-                HUDController.Instance.EndGame(false);
-                return;
-            }
         }
         else
         {

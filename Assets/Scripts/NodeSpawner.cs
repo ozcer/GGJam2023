@@ -15,7 +15,6 @@ public class NodeSpawner : MonoBehaviour
         {
             // Spawn new node
             Instantiate(nodePrefab, transform.position, Quaternion.identity);
-            ResourceManager.Instance.GrowPlant();
         }
         
         Resource resource = GetNearestResource();

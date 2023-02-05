@@ -23,7 +23,7 @@ public class HUDController : Singleton<HUDController>
     
     [Header("Water")]
     public TextMeshProUGUI waterText;
-    public Slider waterSlider;
+    public RectTransform waterBarTransform;
     public OTween waterSliderTween;
     public SpriteRenderer wateringCanSprite;
     public Vector3 wateringCanTilt = new Vector3(0, 0, 90);
@@ -39,14 +39,16 @@ public class HUDController : Singleton<HUDController>
         
         maxLengthValue = GameInstanceController.Instance.Mode.startingMaxLength;
         
-        waterSliderTween = waterSlider.GetComponent<OTween>();
+        waterSliderTween = waterBarTransform.GetComponent<OTween>();
     }
 
     void Update()
     {
         // update water UI
         // waterText.text = $"{resourceManager.water} water";
-        waterSlider.value = (float) resourceManager.water / resourceManager.maxWater;
+        Vector2 size = waterBarTransform.sizeDelta;
+        size.x = resourceManager.water;
+        waterBarTransform.sizeDelta = size;
     }
 
     public bool HasRemainingLength()
@@ -67,7 +69,7 @@ public class HUDController : Singleton<HUDController>
     public void SetLength(float newLength, int rootId)
     {
         currentLengths[rootId] = newLength;
-        lengthIndicatorText.text = $"{(int)GetCurrentTotalLength()}/{(int)maxLengthValue} cm";
+        lengthIndicatorText.text = $"{(int)GetCurrentTotalLength()} cm";
     }
 
 
