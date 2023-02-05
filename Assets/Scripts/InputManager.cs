@@ -34,7 +34,10 @@ public class InputManager : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0))
         {
-            _selectedNode.Unselect();
+            if (_selectedNode != null)
+            {
+                _selectedNode.Unselect();
+            }
             _selectedNode = null;
         }
         else if (Input.GetMouseButtonDown(0))
