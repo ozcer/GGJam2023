@@ -13,7 +13,13 @@ public class HUDController : Singleton<HUDController>
     GameObject endGameCard;
 
     [SerializeField]
-    TextMeshProUGUI endGameText;
+    GameObject loseScreen;
+
+    [SerializeField]
+    GameObject winScreen;
+
+    [SerializeField]
+    GameObject titleScreen;
 
     private float maxLengthValue;
 
@@ -72,11 +78,23 @@ public class HUDController : Singleton<HUDController>
         lengthIndicatorText.text = $"{(int)GetCurrentTotalLength()}/{(int)GameInstanceController.Instance.Mode.winLength} cm";
     }
 
+    private IEnumerator ShowWin()
+    {
+        yield return new WaitForSeconds(3);
+        winScreen.SetActive(true);
 
+    }
     public void EndGame(bool won)
     {
         endGameCard.SetActive(true);
-        endGameText.text = won ? "The plant grew :D" : "The plant died :(";
+        loseScreen.SetActive(!won);
+        
+        if (won)
+        {
+            SunflowerController.Instance.Bloom();
+            StartCoroutine(ShowWin());
+        }
+
         GameInstanceController.Instance.EndGame();
     }
     

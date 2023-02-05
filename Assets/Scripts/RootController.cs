@@ -42,7 +42,10 @@ public class RootController : MonoBehaviour
         }
         if (HUDController.Instance.GetCurrentTotalLength() >= GameInstanceController.Instance.Mode.winLength)
         {
-            HUDController.Instance.EndGame(true);
+            if (!GameInstanceController.Instance.GetGameEnded())
+            {
+                HUDController.Instance.EndGame(true);
+            }
             return;
         }
         // TODO: check if reached target and trigger win condition
