@@ -71,10 +71,9 @@ public class FollowPlayerController : MonoBehaviour
         Vector3 worldPos = mouseRay.GetPoint(distance);
         worldPos = wallController.BoundPointInsideWalls(worldPos);
         mousePosInScreenUnits = _cam.WorldToScreenPoint(worldPos);
-
+        mousePosInScreenUnits.z = 0; // gotta zero this out because Screen space still has z
 
         Vector3 deltaDirectionInScreenUnits = mousePosInScreenUnits - new Vector3(center.x, center.y, 0);
-        
        
         if (deltaDirectionInScreenUnits.magnitude > sufficientDistance)
         {
@@ -91,7 +90,6 @@ public class FollowPlayerController : MonoBehaviour
             Vector2 textureDifference = new Vector2(deltaDirectionInScreenUnits.x * screenToRockTextureUnits, deltaDirectionInScreenUnits.y * screenToRockTextureUnits);
             totalDelta += textureDifference;
             rockMat.SetTextureOffset("_MainTex", totalDelta);
-            Debug.Log(totalDelta);
         }
     }
 }
