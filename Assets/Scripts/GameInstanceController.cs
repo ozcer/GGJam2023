@@ -14,6 +14,10 @@ public class GameInstanceController : Singleton<GameInstanceController>
         gameEnded = true;
     }
 
+    public void Reset()
+    {
+        gameEnded = false;
+    }
     public bool GetGameEnded()
     {
         return gameEnded;

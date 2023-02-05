@@ -15,18 +15,19 @@ public class StartController : MonoBehaviour
     {
         DontDestroyOnLoad(GameInstanceController.Instance.gameObject);
 
-
+        GameInstanceController.Instance.Reset();
     }
 
 
     public void OnDifficulty()
     {
 
-        GameInstanceController.Instance.Mode = gameModes[difficultyDropdown.value];
+        //GameInstanceController.Instance.Mode = gameModes[difficultyDropdown.value];
     }
 
     public void StartGame()
     {
+        GameInstanceController.Instance.Mode = gameModes[difficultyDropdown.value];
         SceneManager.LoadSceneAsync(1);
     }
 }
