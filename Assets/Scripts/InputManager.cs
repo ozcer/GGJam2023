@@ -42,7 +42,10 @@ public class InputManager : MonoBehaviour
             if (!_selectedNode)
             {
                 _selectedNode = NearestNode(_cursorPos);
-                _selectedNode.Select();
+                if (_selectedNode != null)
+                {
+                    _selectedNode.Select();
+                }
             }
         }
 
