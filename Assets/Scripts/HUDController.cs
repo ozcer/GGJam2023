@@ -81,7 +81,9 @@ public class HUDController : Singleton<HUDController>
     private IEnumerator ShowWin()
     {
         yield return new WaitForSeconds(3);
-        winScreen.SetActive(true);
+        // TODO: make this not random
+        MonsterSpawner.Instance.ShowMonster(UnityEngine.Random.Range(0, 5));
+        //winScreen.SetActive(true);
 
     }
     public void EndGame(bool won)
