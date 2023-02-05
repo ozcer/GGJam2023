@@ -60,22 +60,20 @@ public class FollowPlayerController : MonoBehaviour
         
         // assumes 0.3 for plant camera
         Vector2 center = _cam.pixelRect.position + new Vector2(0.65f * _cam.pixelWidth, _cam.pixelHeight / 2); // TODO: remove magic number
-
-        if (Input.mousePosition.x < _cam.pixelRect.x + _cam.pixelWidth * 0.3f || Input.mousePosition.x > _cam.pixelRect.x + _cam.pixelWidth || 
-            Input.mousePosition.y < _cam.pixelRect.y || Input.mousePosition.y > _cam.pixelRect.y + _cam.pixelHeight)
+        Vector3 mousePosInScreenUnits = Input.mousePosition;
+        if (mousePosInScreenUnits.x < _cam.pixelRect.x + _cam.pixelWidth * 0.3f || mousePosInScreenUnits.x > _cam.pixelRect.x + _cam.pixelWidth || 
+            mousePosInScreenUnits.y < _cam.pixelRect.y || mousePosInScreenUnits.y > _cam.pixelRect.y + _cam.pixelHeight)
         {
             return;
         }
-        Ray mouseRay = _cam.ScreenPointToRay(Input.mousePosition);
+        Ray mouseRay = _cam.ScreenPointToRay(mousePosInScreenUnits);
         _plane.Raycast(mouseRay, out float distance);
         Vector3 worldPos = mouseRay.GetPoint(distance);
-        if (wallController.PointOutOfBounds(worldPos))
-        {
-            return;
-        }
+        worldPos = wallController.BoundPointInsideWalls(worldPos);
+        mousePosInScreenUnits = _cam.WorldToScreenPoint(worldPos);
 
 
-        Vector3 deltaDirectionInScreenUnits = Input.mousePosition - new Vector3(center.x, center.y, 0);
+        Vector3 deltaDirectionInScreenUnits = mousePosInScreenUnits - new Vector3(center.x, center.y, 0);
         
        
         if (deltaDirectionInScreenUnits.magnitude > sufficientDistance)

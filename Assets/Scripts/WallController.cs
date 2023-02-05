@@ -15,10 +15,11 @@ public class WallController : MonoBehaviour
 
     List<Transform> wallTransformList = new List<Transform>();
   
-    public bool PointOutOfBounds(Vector3 point)
+    public Vector3 BoundPointInsideWalls(Vector3 point)
     {
-        return point.x < leftWallTransform.position.x || point.x > rightWallTransform.position.x ||
-            point.y < bottomWallTransform.position.y || point.y > topWallTransform.position.y;
+        point.x = Mathf.Clamp(point.x, leftWallTransform.position.x, rightWallTransform.position.x);
+        point.y = Mathf.Clamp(point.y, bottomWallTransform.position.y, topWallTransform.position.y);
+        return point;
     }
 
     void OnDrawGizmos()
