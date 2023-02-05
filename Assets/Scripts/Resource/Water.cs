@@ -6,6 +6,11 @@ public class Water : Resource
 {
     bool captured = false;
     public int waterAmount = 20; // because H20 XDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
+    [SerializeField]
+    Transform waterSliderTransform;
+    [SerializeField]
+    SpriteRenderer dropRenderer;
+
     public override void OnCapture()
     {
         if (captured) return;
@@ -16,6 +21,10 @@ public class Water : Resource
         HUDController.Instance.waterSliderTween.Pop();
         
         Vector3 sliderWorldPos = Camera.main.ScreenToWorldPoint(HUDController.Instance.waterBarTransform.transform.position);
-        CaptureAnimate(sliderWorldPos);
+        LeanTween.moveLocalY(waterSliderTransform.gameObject, -20, 1f).setOnComplete(() =>
+        {
+            dropRenderer.enabled = true;
+            CaptureAnimate(sliderWorldPos);
+        });
     }
 }
