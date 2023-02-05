@@ -34,6 +34,7 @@ public class InputManager : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0))
         {
+            _selectedNode.Unselect();
             _selectedNode = null;
         }
         else if (Input.GetMouseButtonDown(0))
@@ -41,6 +42,7 @@ public class InputManager : MonoBehaviour
             if (!_selectedNode)
             {
                 _selectedNode = NearestNode(_cursorPos);
+                _selectedNode.Select();
             }
         }
 
