@@ -11,4 +11,9 @@ public class SunflowerController : Singleton<SunflowerController>
     {
         animator.SetTrigger("Bloom");
     }
+    
+    public void GoBackToMenu()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Splash");
+    }
 }

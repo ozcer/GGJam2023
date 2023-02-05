@@ -40,6 +40,8 @@ public class HUDController : Singleton<HUDController>
     // Start is called before the first frame update
     public GameObject smokePrefab;
     public Camera seedCamera;
+    public Button restartButton;
+    public SpriteRenderer seedViewBackground;
     void Start()
     {
         resourceManager = ResourceManager.Instance;
@@ -90,6 +92,12 @@ public class HUDController : Singleton<HUDController>
         LeanTween.value((orthographicSize = seedCamera.orthographicSize), orthographicSize - 3, 1f).setEase(LeanTweenType.easeOutBounce).setOnUpdate((val) =>
         {
             seedCamera.orthographicSize = val;
+        }).setOnComplete(() =>
+        {
+           // Send in end game button
+           LeanTween.moveLocalY(restartButton.gameObject, restartButton.transform.position.y + 300, 1f)
+               .setEase(LeanTweenType.easeOutQuad).setDelay(3f);
+
         });
         //winScreen.SetActive(true);
 
