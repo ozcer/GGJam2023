@@ -1335,6 +1335,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2495346328404291766, guid: 70300d98c0454264c80f31125dc47bba, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7607854546739939383, guid: 70300d98c0454264c80f31125dc47bba, type: 3}
       propertyPath: m_Name
       value: Root

@@ -2,7 +2,7 @@
 	//show values to edit in inspector
 	Properties{
 		_Color ("Tint", Color) = (0, 0, 0, 1)
-		[PerRendererData] _MainTex ("Texture", 2D) = "white" {}
+		_MainTex ("Texture", 2D) = "white" {}
 		_Frequency ("Frequency", Float) = 1
 	}
 
