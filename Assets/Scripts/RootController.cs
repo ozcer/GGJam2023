@@ -47,7 +47,6 @@ public class RootController : MonoBehaviour
         }
         // TODO: check if reached target and trigger win condition
         HUDController.Instance.SetLength(fullDistance, rootId);
-        Debug.Log("previous full " + previousFullDistance + " full " + fullDistance);
         float delta = fullDistance - previousFullDistance;
         previousFullDistance = fullDistance;
         if (delta > 0.0001f)

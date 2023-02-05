@@ -69,7 +69,7 @@ public class HUDController : Singleton<HUDController>
     public void SetLength(float newLength, int rootId)
     {
         currentLengths[rootId] = newLength;
-        lengthIndicatorText.text = $"{(int)GetCurrentTotalLength()} cm";
+        lengthIndicatorText.text = $"{(int)GetCurrentTotalLength()}/{(int)GameInstanceController.Instance.Mode.winLength} cm";
     }
 
 

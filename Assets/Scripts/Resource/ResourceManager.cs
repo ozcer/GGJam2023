@@ -23,7 +23,6 @@ public class ResourceManager : Singleton<ResourceManager>
             return;
         }
         water -= deltaDistance / growthWaterCost;
-        Debug.Log(deltaDistance + " water");
         if (water <= 0)
         {
             HUDController.Instance.EndGame(false);
