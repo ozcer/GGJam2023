@@ -38,7 +38,8 @@ public class HUDController : Singleton<HUDController>
 
     ResourceManager resourceManager;
     // Start is called before the first frame update
-
+    public GameObject smokePrefab;
+    public Camera seedCamera;
     void Start()
     {
         resourceManager = ResourceManager.Instance;
@@ -82,7 +83,14 @@ public class HUDController : Singleton<HUDController>
     {
         yield return new WaitForSeconds(3);
         // TODO: make this not random
+        Instantiate(smokePrefab, SunflowerController.Instance.transform.position, Quaternion.identity);
         MonsterSpawner.Instance.ShowMonster(UnityEngine.Random.Range(0, 5));
+        // tween camera size
+        float orthographicSize;
+        LeanTween.value((orthographicSize = seedCamera.orthographicSize), orthographicSize - 3, 1f).setEase(LeanTweenType.easeOutBounce).setOnUpdate((val) =>
+        {
+            seedCamera.orthographicSize = val;
+        });
         //winScreen.SetActive(true);
 
     }

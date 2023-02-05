@@ -274,6 +274,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3281615812643270194, guid: 42439a0bbec36724e82ad3f4198def2f, type: 3}
+      propertyPath: smokePrefab
+      value: 
+      objectReference: {fileID: 7916250209980318476, guid: 95dcfe5dc17d3044b9cb337ce9ccb30b, type: 3}
     - target: {fileID: 5409210290559945434, guid: 42439a0bbec36724e82ad3f4198def2f, type: 3}
       propertyPath: m_Name
       value: SunflowerAnimation
@@ -482,6 +486,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1009531739017555280, guid: 48deeec228c3fe4468870d43747559c5, type: 3}
+      propertyPath: seedCamera
+      value: 
+      objectReference: {fileID: 2891194704477978683}
+    - target: {fileID: 1009531739017555280, guid: 48deeec228c3fe4468870d43747559c5, type: 3}
+      propertyPath: smokePrefab
+      value: 
+      objectReference: {fileID: 7916250209980318476, guid: 95dcfe5dc17d3044b9cb337ce9ccb30b, type: 3}
     - target: {fileID: 1009531739017555280, guid: 48deeec228c3fe4468870d43747559c5, type: 3}
       propertyPath: wateringCan
       value: 
@@ -1131,6 +1143,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b875d77341c2705488e85c4a6d3a2435, type: 3}
+--- !u!20 &2891194704477978683 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 2891194704510902271, guid: b875d77341c2705488e85c4a6d3a2435, type: 3}
+  m_PrefabInstance: {fileID: 2891194704477978682}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6581261442055831153
 PrefabInstance:
   m_ObjectHideFlags: 0
