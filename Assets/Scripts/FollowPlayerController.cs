@@ -30,15 +30,13 @@ public class FollowPlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameInstanceController.Instance.GetGameEnded())
+        {
+            return;
+        }
         Vector2 center = _cam.pixelRect.position + new Vector2(_cam.pixelWidth / 2, _cam.pixelHeight / 2);
 
-
-        //Debug.DrawRay(center.origin, ray.origin - center.origin, Color.red, 10);
-
-        //Vector3 deltaDirection = ray.origin - center.origin;
         Vector3 deltaDirection = Input.mousePosition - new Vector3(center.x, center.y, 0);
-        Debug.Log(" Center" + center + " input" + Input.mousePosition);
-        Debug.Log("Magnitude: " + deltaDirection.magnitude);
         if (deltaDirection.magnitude > sufficientDistance)
         {
             deltaDirection -= deltaDirection.normalized * cameraDampenFactor;

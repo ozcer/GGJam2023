@@ -132,8 +132,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lerpSpeed: 0.1
   targetPlayerTransform: {fileID: 0}
-  sufficientDistance: 300
-  cameraDampenFactor: 3
+  sufficientDistance: 200
+  cameraDampenFactor: 160
 --- !u!1 &2891194704510902265
 GameObject:
   m_ObjectHideFlags: 0
