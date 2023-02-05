@@ -18,7 +18,10 @@ public class MonsterSpawner : Singleton<MonsterSpawner>
 
     public void ShowMonster(int index)
     {
-        SunflowerController.Instance.gameObject.SetActive(false);
+        if (index != 0)
+        {
+            SunflowerController.Instance.gameObject.SetActive(false);
+        }
         if (Monsters[index] != null)
         {
             GameObject result = Instantiate(Monsters[index], transform);
