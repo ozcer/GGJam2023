@@ -537,6 +537,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   water: 100
   growthWaterCost: 1
+  powerups: 
 --- !u!4 &785174919
 Transform:
   m_ObjectHideFlags: 0
@@ -1665,6 +1666,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 970905899812268086, guid: 6a6c3e2d431555348a65d4c8252425c6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1325052770415934298, guid: 6a6c3e2d431555348a65d4c8252425c6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5859970936569966570, guid: 6a6c3e2d431555348a65d4c8252425c6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6581261442279026016, guid: 6a6c3e2d431555348a65d4c8252425c6, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -1712,6 +1725,14 @@ PrefabInstance:
     - target: {fileID: 6581261442279026017, guid: 6a6c3e2d431555348a65d4c8252425c6, type: 3}
       propertyPath: m_Name
       value: Obstacles
+      objectReference: {fileID: 0}
+    - target: {fileID: 7348462667620256076, guid: 6a6c3e2d431555348a65d4c8252425c6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8042341685716242285, guid: 6a6c3e2d431555348a65d4c8252425c6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a6c3e2d431555348a65d4c8252425c6, type: 3}

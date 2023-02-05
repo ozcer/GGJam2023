@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class NodeSpawner : MonoBehaviour
@@ -20,6 +21,7 @@ public class NodeSpawner : MonoBehaviour
         Resource resource = GetNearestResource();
         if (resource != null)
         {
+            print($"capturing {resource}");
             resource.OnCapture();
         }
     }

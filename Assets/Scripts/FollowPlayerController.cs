@@ -91,7 +91,7 @@ public class FollowPlayerController : MonoBehaviour
             Vector2 textureDifference = new Vector2(deltaDirectionInScreenUnits.x * screenToRockTextureUnits, deltaDirectionInScreenUnits.y * screenToRockTextureUnits);
             totalDelta += textureDifference;
             rockMat.SetTextureOffset("_MainTex", totalDelta);
-            Debug.Log(totalDelta);
+            // Debug.Log(totalDelta);
         }
     }
 }

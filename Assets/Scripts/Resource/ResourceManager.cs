@@ -10,6 +10,7 @@ public class ResourceManager : Singleton<ResourceManager>
 {
     public float water;
     public float growthWaterCost = 1;
+    public List<int> powerups = new List<int>();
 
     private void Awake()
     {
@@ -33,5 +34,10 @@ public class ResourceManager : Singleton<ResourceManager>
     {
         water += amount;
     }
-    
+
+    public void GainPowerup(int mosnterIndex)
+    {
+        powerups.Add(mosnterIndex);
+    }
+
 }

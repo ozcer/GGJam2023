@@ -16,6 +16,7 @@ public abstract class Resource : MonoBehaviour
     protected void CaptureAnimate(Vector3 destination)
     {
         // Bounce up and destroy
+        print($"capture animate {name}");
         LeanTween.scale(gameObject, captureAnimationScale, captureAnimationTime).setEase(captureAnimationEase);
         LeanTween.moveLocal(
             gameObject, 
