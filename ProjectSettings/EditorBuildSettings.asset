@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/testing_level_colliders.unity
+    guid: 5cc2f26ead6c6494f9819c9a2d1ed3d0
   m_configObjects: {}
