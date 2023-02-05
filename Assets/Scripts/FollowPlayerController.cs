@@ -25,8 +25,12 @@ public class FollowPlayerController : MonoBehaviour
     Material rockMat;
 
     Vector2 screenSizeInWorldUnits;
+
+    WallController wallController;
     void Start()
     {
+        wallController = FindAnyObjectByType<WallController>();
+        Assert.IsNotNull(wallController);
         _cam = Camera.main;
         
         offset = _cam.transform.position - targetPlayerTransform.position;
@@ -55,13 +59,21 @@ public class FollowPlayerController : MonoBehaviour
         }
         
         // assumes 0.3 for plant camera
-        Vector2 center = _cam.pixelRect.position + new Vector2(0.65f * _cam.pixelWidth, _cam.pixelHeight / 2);
+        Vector2 center = _cam.pixelRect.position + new Vector2(0.65f * _cam.pixelWidth, _cam.pixelHeight / 2); // TODO: remove magic number
 
-        if (Input.mousePosition.x < _cam.pixelRect.x || Input.mousePosition.x > _cam.pixelRect.x + _cam.pixelWidth || 
+        if (Input.mousePosition.x < _cam.pixelRect.x + _cam.pixelWidth * 0.3f || Input.mousePosition.x > _cam.pixelRect.x + _cam.pixelWidth || 
             Input.mousePosition.y < _cam.pixelRect.y || Input.mousePosition.y > _cam.pixelRect.y + _cam.pixelHeight)
         {
             return;
-        } 
+        }
+        Ray mouseRay = _cam.ScreenPointToRay(Input.mousePosition);
+        _plane.Raycast(mouseRay, out float distance);
+        Vector3 worldPos = mouseRay.GetPoint(distance);
+        if (wallController.PointOutOfBounds(worldPos))
+        {
+            return;
+        }
+
 
         Vector3 deltaDirectionInScreenUnits = Input.mousePosition - new Vector3(center.x, center.y, 0);
         
