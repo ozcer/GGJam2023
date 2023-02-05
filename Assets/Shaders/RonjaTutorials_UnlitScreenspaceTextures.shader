@@ -2,7 +2,7 @@
 	//show values to edit in inspector
 	Properties{
 		_Color ("Tint", Color) = (0, 0, 0, 1)
-		_MainTex ("Texture", 2D) = "white" {}
+		[PerRendererData] _MainTex ("Texture", 2D) = "white" {}
 		_Frequency ("Frequency", Float) = 1
 	}
 
@@ -55,7 +55,8 @@
                 float aspect = _ScreenParams.x / _ScreenParams.y;
                 textureCoordinate.x = textureCoordinate.x * aspect;
                 textureCoordinate = TRANSFORM_TEX(textureCoordinate, _MainTex);
-				fixed4 col = tex2D(_MainTex, (textureCoordinate ) * _Frequency + i.screenPosition.xy);
+				fixed4 col = tex2D(_MainTex, textureCoordinate * _Frequency);
+				//fixed4 col = fixed4(textureCoordinate.xy, 0, 1);
 				col *= _Color;
 				return col;
 			}

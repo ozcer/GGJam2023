@@ -86,9 +86,9 @@ Camera:
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.3
+    x: 0
     y: 0
-    width: 0.7
+    width: 1
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -130,10 +130,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6524d67e801a94a4ba8f265b6d1efae7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lerpSpeed: 0.1
+  lerpSpeed: 2
   targetPlayerTransform: {fileID: 0}
-  sufficientDistance: 200
-  cameraDampenFactor: 160
+  sufficientDistance: 50
+  cameraDampenFactor: 40
+  rockMat: {fileID: 2100000, guid: b7eedc7e44ffc8e40874f0d462d8e818, type: 2}
 --- !u!1 &2891194704510902265
 GameObject:
   m_ObjectHideFlags: 0
@@ -194,7 +195,7 @@ Camera:
   field of view: 60
   orthographic: 1
   orthographic size: 30
-  m_Depth: -1
+  m_Depth: 2
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 2147483647

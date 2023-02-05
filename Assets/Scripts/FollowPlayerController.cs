@@ -18,14 +18,33 @@ public class FollowPlayerController : MonoBehaviour
     [Tooltip("Higher value slows down camera more when it's almost at the player")]
     [SerializeField]
     private float cameraDampenFactor;
+
     Camera _cam;
+
+    [SerializeField]
+    Material rockMat;
+
+    Vector2 screenSizeInWorldUnits;
     void Start()
     {
         _cam = Camera.main;
         
         offset = _cam.transform.position - targetPlayerTransform.position;
 
+        Ray leftRay = _cam.ViewportPointToRay(Vector2.zero);
+        _plane.Raycast(leftRay, out float distanceMouse);
+        Vector3 bottomLeftCornerWorld = leftRay.GetPoint(distanceMouse);
+
+        Ray rightRay = _cam.ViewportPointToRay(Vector2.one);
+        _plane.Raycast(rightRay, out float distanceCenter);
+        Vector3 topRightCornerWorld = rightRay.GetPoint(distanceCenter);
+
+        screenSizeInWorldUnits = topRightCornerWorld - bottomLeftCornerWorld;
+        Debug.LogWarning(screenSizeInWorldUnits);
+        Debug.LogWarning(_cam.pixelRect);
     }
+
+    Vector2 totalDelta = Vector2.zero;
 
     // Update is called once per frame
     void Update()
@@ -35,8 +54,8 @@ public class FollowPlayerController : MonoBehaviour
             return;
         }
         
-        
-        Vector2 center = _cam.pixelRect.position + new Vector2(_cam.pixelWidth / 2, _cam.pixelHeight / 2);
+        // assumes 0.3 for plant camera
+        Vector2 center = _cam.pixelRect.position + new Vector2(0.65f * _cam.pixelWidth, _cam.pixelHeight / 2);
 
         if (Input.mousePosition.x < _cam.pixelRect.x || Input.mousePosition.x > _cam.pixelRect.x + _cam.pixelWidth || 
             Input.mousePosition.y < _cam.pixelRect.y || Input.mousePosition.y > _cam.pixelRect.y + _cam.pixelHeight)
@@ -44,11 +63,25 @@ public class FollowPlayerController : MonoBehaviour
             return;
         } 
 
-        Vector3 deltaDirection = Input.mousePosition - new Vector3(center.x, center.y, 0);
-        if (deltaDirection.magnitude > sufficientDistance)
+        Vector3 deltaDirectionInScreenUnits = Input.mousePosition - new Vector3(center.x, center.y, 0);
+        
+       
+        if (deltaDirectionInScreenUnits.magnitude > sufficientDistance)
         {
-            deltaDirection -= deltaDirection.normalized * cameraDampenFactor;
-            _cam.transform.position += Time.deltaTime * lerpSpeed * deltaDirection;
+            deltaDirectionInScreenUnits -= deltaDirectionInScreenUnits.normalized * cameraDampenFactor;
+            deltaDirectionInScreenUnits *= Time.deltaTime* lerpSpeed;
+
+            // transform in world
+            float screenToWorldUnits = screenSizeInWorldUnits.y / _cam.pixelHeight;
+            Vector3 deltaDirectionInWorldUnits = deltaDirectionInScreenUnits * screenToWorldUnits;
+            _cam.transform.position += deltaDirectionInWorldUnits;
+
+            // calculate texture offset
+            float screenToRockTextureUnits = 1 / (float)_cam.pixelHeight;
+            Vector2 textureDifference = new Vector2(deltaDirectionInScreenUnits.x * screenToRockTextureUnits, deltaDirectionInScreenUnits.y * screenToRockTextureUnits);
+            totalDelta += textureDifference;
+            rockMat.SetTextureOffset("_MainTex", totalDelta);
+            Debug.Log(totalDelta);
         }
     }
 }
