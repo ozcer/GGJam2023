@@ -88,7 +88,7 @@ public class HUDController : Singleton<HUDController>
     {
         endGameCard.SetActive(true);
         loseScreen.SetActive(!won);
-        
+        StopWatering();
         if (won)
         {
             SunflowerController.Instance.Bloom();

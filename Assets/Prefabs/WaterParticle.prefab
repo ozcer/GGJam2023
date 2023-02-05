@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4015925725587770782}
   - component: {fileID: 1888832830363957830}
   - component: {fileID: 479840683278326038}
+  - component: {fileID: 4818304820747482287}
   m_Layer: 0
   m_Name: WaterParticle
   m_TagString: Untagged
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a8a54fa40924d413db6732d73e189a1a, type: 3}
   m_Color: {r: 0.20993744, g: 0.77940094, b: 0.9056604, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -106,3 +107,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &4818304820747482287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2330224592429333256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fafba8b95f2434488b42c78b6cfaaf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
