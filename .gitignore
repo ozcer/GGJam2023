@@ -62,3 +62,4 @@ crashlytics-build.properties
 .vsconfig
 UserSettings/EditorUserSettings.asset
 Build.zip
+UserSettings/*
