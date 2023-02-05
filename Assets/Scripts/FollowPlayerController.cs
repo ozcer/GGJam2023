@@ -34,7 +34,15 @@ public class FollowPlayerController : MonoBehaviour
         {
             return;
         }
+        
+        
         Vector2 center = _cam.pixelRect.position + new Vector2(_cam.pixelWidth / 2, _cam.pixelHeight / 2);
+
+        if (Input.mousePosition.x < _cam.pixelRect.x || Input.mousePosition.x > _cam.pixelRect.x + _cam.pixelWidth || 
+            Input.mousePosition.y < _cam.pixelRect.y || Input.mousePosition.y > _cam.pixelRect.y + _cam.pixelHeight)
+        {
+            return;
+        } 
 
         Vector3 deltaDirection = Input.mousePosition - new Vector3(center.x, center.y, 0);
         if (deltaDirection.magnitude > sufficientDistance)
