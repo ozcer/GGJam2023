@@ -91,8 +91,10 @@ public class HUDController : Singleton<HUDController>
         StopWatering();
         if (won)
         {
-            SunflowerController.Instance.Bloom();
-            StartCoroutine(ShowWin());
+            CamerasController.Instance.ExpandSeedCamera(() => {
+                SunflowerController.Instance.Bloom();
+                StartCoroutine(ShowWin());
+            });
         }
 
         GameInstanceController.Instance.EndGame();
