@@ -71,7 +71,7 @@ public class FollowPlayerController : MonoBehaviour
         Vector3 worldPos = mouseRay.GetPoint(distance);
         worldPos = wallController.BoundPointInsideWalls(worldPos);
         mousePosInScreenUnits = _cam.WorldToScreenPoint(worldPos);
-
+        mousePosInScreenUnits.z = 0; // gotta zero this out because Screen space still has z
 
         Vector3 deltaDirectionInScreenUnits = mousePosInScreenUnits - new Vector3(center.x, center.y, 0);
         
