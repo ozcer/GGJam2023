@@ -108,7 +108,6 @@ public class HUDController : Singleton<HUDController>
     public void EndGame(bool won)
     {
         endGameCard.SetActive(true);
-        loseScreen.SetActive(!won);
         StopWatering();
         if (won)
         {
@@ -123,6 +122,22 @@ public class HUDController : Singleton<HUDController>
                 SunflowerController.Instance.Bloom();
                 StartCoroutine(ShowWin(most));
             });
+        }
+        else
+        {
+            loseScreen.SetActive(true);
+            Image r = loseScreen.GetComponent<Image>();
+            Image sun = r.transform.GetChild(0).GetComponent<Image>();
+            LeanTween.value(gameObject, 0, 1, 2).setOnUpdate((float val) =>
+            {
+                Color c = r.color;
+                c.a = val;
+                r.color = c;
+                
+                Color c2 = sun.color;
+                c2.a = val;
+                sun.color = c2;
+            }).setEase(LeanTweenType.easeInCubic).setOnComplete(ShowRestartButton);
         }
 
         GameInstanceController.Instance.EndGame();
