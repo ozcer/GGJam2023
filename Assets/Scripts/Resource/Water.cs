@@ -11,6 +11,8 @@ public class Water : Resource
     [SerializeField]
     SpriteRenderer dropRenderer;
 
+    [SerializeField]
+    AudioSource audioSource;
     public override void OnCapture()
     {
         if (captured) return;
@@ -26,5 +28,6 @@ public class Water : Resource
             dropRenderer.enabled = true;
             CaptureAnimate(sliderWorldPos);
         });
+        audioSource.Play();
     }
 }
