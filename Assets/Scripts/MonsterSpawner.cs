@@ -16,6 +16,8 @@ public class MonsterSpawner : Singleton<MonsterSpawner>
     [SerializeField]
     ParticleSystem Smoke;
 
+    public AudioManager audioManager;
+
     public void ShowMonster(int index)
     {
         if (index != 0)
@@ -30,5 +32,6 @@ public class MonsterSpawner : Singleton<MonsterSpawner>
             result.transform.localScale = Vector3.one;
         }
         spriteRenderer.sprite = Signs[index];
+        audioManager.playEndingMusic(index);
     }
 }

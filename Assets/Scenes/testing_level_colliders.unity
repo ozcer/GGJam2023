@@ -516,6 +516,7 @@ GameObject:
   m_Component:
   - component: {fileID: 713939804}
   - component: {fileID: 713939803}
+  - component: {fileID: 713939805}
   m_Layer: 0
   m_Name: Audio Source
   m_TagString: Untagged
@@ -634,6 +635,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &713939805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 713939802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a3d01724be17c546b4b840e009eb2e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClips:
+  - {fileID: 8300000, guid: 7edf84005c96d4c478f1f27276fe5179, type: 3}
+  - {fileID: 8300000, guid: 913ef0ca47e4e344f86303be0ca25c2b, type: 3}
+  - {fileID: 8300000, guid: 175a586c1027e894a937d73cc6b08551, type: 3}
+  - {fileID: 8300000, guid: da7de212bf80e9d4eaaac6e7c627404d, type: 3}
+  - {fileID: 8300000, guid: 8ca5e7a2b7db4a542ace8abaf3258e94, type: 3}
+  audioSource: {fileID: 713939803}
 --- !u!1 &785174917
 GameObject:
   m_ObjectHideFlags: 0
@@ -1928,6 +1948,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1318675466750564607, guid: a082ceded07df8a46b882fd7950dd7ec, type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 713939805}
     - target: {fileID: 2820378244297098091, guid: a082ceded07df8a46b882fd7950dd7ec, type: 3}
       propertyPath: m_RootOrder
       value: 2
