@@ -13,6 +13,9 @@ public class Water : Resource
 
     [SerializeField]
     AudioSource audioSource;
+
+    [SerializeField]
+    List<AudioClip> audioClips;
     public override void OnCapture()
     {
         if (captured) return;
@@ -28,6 +31,7 @@ public class Water : Resource
             dropRenderer.enabled = true;
             CaptureAnimate(sliderWorldPos);
         });
+        audioSource.clip = audioClips[UnityEngine.Random.Range(0, audioClips.Count)];
         audioSource.Play();
     }
 }
