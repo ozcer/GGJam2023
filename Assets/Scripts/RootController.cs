@@ -1,5 +1,6 @@
 using UnityEngine;
 
+// Tracks root length, but not responsible for movement. See InputController for that
 public class RootController : MonoBehaviour
 {
     private class RootControllerIdGenerator

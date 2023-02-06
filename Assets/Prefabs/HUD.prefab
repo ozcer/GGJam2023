@@ -375,6 +375,7 @@ GameObject:
   - component: {fileID: 82587285987813800}
   - component: {fileID: 2551153939079775885}
   - component: {fileID: 3239892640034338774}
+  - component: {fileID: 9047042973036209981}
   m_Layer: 5
   m_Name: WaterBar
   m_TagString: Untagged
@@ -399,8 +400,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -20, y: 5}
-  m_SizeDelta: {x: 123, y: 10}
+  m_AnchoredPosition: {x: -40, y: 5}
+  m_SizeDelta: {x: 123, y: 30}
   m_Pivot: {x: 1, y: 0}
 --- !u!222 &82587285987813800
 CanvasRenderer:
@@ -423,7 +424,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.26526982, g: 0.572778, b: 0.6037736, a: 1}
+  m_Color: {r: 0.16862746, g: 0.7411765, b: 0.7921569, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -459,6 +460,21 @@ MonoBehaviour:
   popDuration: 0.3
   popEase: 17
   popScale: {x: 1.5, y: 1.5, z: 1.5}
+--- !u!114 &9047042973036209981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2568327900700462507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0.078431375, g: 0.101960786, b: 0.30980393, a: 1}
+  m_EffectDistance: {x: 2, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &2687399496108430504
 GameObject:
   m_ObjectHideFlags: 0
@@ -494,7 +510,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 20, y: 20}
   m_SizeDelta: {x: 118.44, y: 50}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &6233374310670189700
@@ -605,6 +621,7 @@ GameObject:
   - component: {fileID: 7751047475237204505}
   - component: {fileID: 7174729942969521654}
   - component: {fileID: 5474887909668746647}
+  - component: {fileID: 5281374555528242832}
   m_Layer: 5
   m_Name: WaterIcon
   m_TagString: Untagged
@@ -630,7 +647,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 20, y: 20}
+  m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 1, y: 0}
 --- !u!222 &7174729942969521654
 CanvasRenderer:
@@ -670,6 +687,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5281374555528242832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4179220687106909639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0.077536486, g: 0.10102671, b: 0.31132078, a: 1}
+  m_EffectDistance: {x: 2, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &4237635899364152444
 GameObject:
   m_ObjectHideFlags: 0
@@ -1128,3 +1160,7 @@ MonoBehaviour:
   wateringCanSprite: {fileID: 0}
   wateringCanTilt: {x: 0, y: 0, z: -90}
   wateringCan: {fileID: 0}
+  smokePrefab: {fileID: 0}
+  seedCamera: {fileID: 0}
+  restartButton: {fileID: 0}
+  seedViewBackground: {fileID: 0}

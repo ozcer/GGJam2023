@@ -14,6 +14,10 @@ public class InputManager : MonoBehaviour
 
     Vector3 originalMousePos;
 
+    bool isNodeSelected = false;
+
+    [SerializeField]
+    AudioSource waterUsageAudioSource;
     void Awake()
     {
         _cam = Camera.main;
@@ -54,11 +58,21 @@ public class InputManager : MonoBehaviour
 
         if (_selectedNode != null)
         {
+            if (!isNodeSelected)
+            {
+                isNodeSelected = true;
+                //waterUsageAudioSource.Play();
+            }
             _selectedNode.MoveToward(_cursorPos);
             HUDController.Instance.StartWatering();
         }
         else
         {
+            if (isNodeSelected)
+            {
+                isNodeSelected = false;
+                //waterUsageAudioSource.Stop();
+            }
             HUDController.Instance.StopWatering();
         }
 

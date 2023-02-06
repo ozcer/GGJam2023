@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using UnityEngine.Assertions;
+// Deals with camera only
 public class FollowPlayerController : MonoBehaviour
 {
     [SerializeField]
