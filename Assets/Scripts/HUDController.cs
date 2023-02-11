@@ -101,8 +101,8 @@ public class HUDController : Singleton<HUDController>
     public void ShowRestartButton()
     {
         // Send in end game button
-        LeanTween.moveLocalY(restartButton.gameObject, restartButton.transform.position.y + 300, 1f)
-            .setEase(LeanTweenType.easeOutQuad).setDelay(3f);
+        LeanTween.moveLocalY(restartButton.gameObject, restartButton.transform.position.y + 400, 1f)
+            .setEase(LeanTweenType.easeOutBounce).setDelay(2f);
     }
     
     public void EndGame(bool won)

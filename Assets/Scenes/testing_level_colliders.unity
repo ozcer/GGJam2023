@@ -904,6 +904,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 843002537477638553, guid: 48deeec228c3fe4468870d43747559c5, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1009531739017555280, guid: 48deeec228c3fe4468870d43747559c5, type: 3}
       propertyPath: seedCamera
       value: 
@@ -1014,6 +1018,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2879199662389959706, guid: 48deeec228c3fe4468870d43747559c5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4401547636913217793, guid: 48deeec228c3fe4468870d43747559c5, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5070306669640275948, guid: 48deeec228c3fe4468870d43747559c5, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8044489645600367791, guid: 48deeec228c3fe4468870d43747559c5, type: 3}
