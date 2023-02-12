@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b0ace7949267144f9f00c369a5ba9ba, type: 3}
   m_Name: EasyGame
   m_EditorClassIdentifier: 
-  startingMaxLength: 20
-  winLength: 15
+  startingMaxLength: 100
+  winLength: 100
   timeLimitSeconds: 120

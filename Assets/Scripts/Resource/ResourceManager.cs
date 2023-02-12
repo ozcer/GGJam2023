@@ -44,6 +44,11 @@ public class ResourceManager : Singleton<ResourceManager>
         pickupEffectAudioSource.Play();
     }
 
+    public void GainPee(int monsterIndex, int amount) {
+        water += amount;
+        powerups.Add(monsterIndex);
+    }
+
     public int GetMonsterIndex() {
         if (powerups.Count == 0) {
             return 0;

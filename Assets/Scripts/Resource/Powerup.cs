@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class Powerup : Resource
 {
-    bool captured = false;
     public int monsterIndex;
-    public override void OnCapture()
+    public override bool OnCapture()
     {
-        if (captured) return;
-        print($"{name} captured");
-        captured = true;
+        if (base.OnCapture()) {
+            return true;
+        }
         ResourceManager.Instance.GainPowerup(monsterIndex);
         Vector3 sliderWorldPos = Camera.main.ScreenToWorldPoint(HUDController.Instance.waterBarTransform.transform.position);
         CaptureAnimate(sliderWorldPos);
-
+        return false;
     }
 }

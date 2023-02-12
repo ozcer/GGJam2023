@@ -29,7 +29,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7633297831524538465, guid: af089e7202256e04b92e30a34f6937c1, type: 3}
       propertyPath: waterAmount
-      value: 30
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 7633297831524538469, guid: af089e7202256e04b92e30a34f6937c1, type: 3}
       propertyPath: m_RootOrder

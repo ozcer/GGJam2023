@@ -157,12 +157,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 0b0525b3bb5859d4287bbbbd01f5bf5c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3f47bab1dc1f1434e9d8cc2a42e0e589, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 11.97, y: 2.2}
+  m_Size: {x: 7.1, y: 2.2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -177,12 +177,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7633297831524538469}
-  - component: {fileID: 7633297831524538465}
   - component: {fileID: -6790802145964626666}
   - component: {fileID: -957669062494074041}
   - component: {fileID: 6911507426548509231}
+  - component: {fileID: 8099680347486759893}
   m_Layer: 0
-  m_Name: Water
+  m_Name: Pee
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -206,33 +206,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7633297831524538465
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7633297831524538464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 442a202866f5fae45adf48e9971d72df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  captureAnimationScale: {x: 2, y: 2, z: 2}
-  captureAnimationOffset: {x: 0, y: 1, z: 0}
-  captureAnimationTime: 1
-  captureAnimationEase: 9
-  exitDuration: 1
-  exitEase: 9
-  waterAmount: 20
-  waterSliderTransform: {fileID: 3292991596333665512}
-  dropRenderer: {fileID: 2175645160441282388}
-  audioSource: {fileID: -6790802145964626666}
-  bubbleAudioSource: {fileID: -957669062494074041}
-  audioClips:
-  - {fileID: 8300000, guid: 195b07079acfeb74eb37057ebaab00cb, type: 3}
-  - {fileID: 8300000, guid: 2c41c57d39fe03b43840c1d093ccc1f9, type: 3}
-  backgroundRenderer: {fileID: 2485287659491214905}
 --- !u!82 &-6790802145964626666
 AudioSource:
   m_ObjectHideFlags: 0
@@ -243,11 +216,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 195b07079acfeb74eb37057ebaab00cb, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 68c8c8327ecdeb545aace7009b86a965, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -438,6 +411,34 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.2154121, y: 1.13835, z: 1}
   m_Center: {x: 0.10770607, y: -0.09942126, z: 0}
+--- !u!114 &8099680347486759893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7633297831524538464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 105d17eb8001da54fa05459ea156fcc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  captureAnimationScale: {x: 2, y: 2, z: 2}
+  captureAnimationOffset: {x: 0, y: 1, z: 0}
+  captureAnimationTime: 1
+  captureAnimationEase: 9
+  exitDuration: 1
+  exitEase: 9
+  waterAmount: 20
+  waterSliderTransform: {fileID: 3292991596333665512}
+  dropRenderer: {fileID: 2175645160441282388}
+  audioSource: {fileID: -6790802145964626666}
+  bubbleAudioSource: {fileID: -957669062494074041}
+  audioClips:
+  - {fileID: 8300000, guid: 68c8c8327ecdeb545aace7009b86a965, type: 3}
+  backgroundRenderer: {fileID: 2485287659491214905}
+  monsterIndex: 4
+  peeAmount: 20
 --- !u!1 &9027044765946208763
 GameObject:
   m_ObjectHideFlags: 0

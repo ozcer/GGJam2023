@@ -1,10 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Water : Resource
 {
-    bool captured = false;
     public int waterAmount = 20; // because H20 XDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
     [SerializeField]
     Transform waterSliderTransform;
@@ -12,7 +10,7 @@ public class Water : Resource
     SpriteRenderer dropRenderer;
 
     [SerializeField]
-    AudioSource audioSource;
+    protected AudioSource audioSource;
 
     [SerializeField]
     AudioSource bubbleAudioSource;
@@ -31,12 +29,19 @@ public class Water : Resource
         waterSliderTransform.localPosition = pos;
     }
 
-    public override void OnCapture()
+    public override bool OnCapture()
     {
-        if (captured) return;
+        if (base.OnCapture()) {
+            return true;
+        }
         print("Water captured");
-        captured = true;
+        Animate();
+        return false;
+    }
+
+    public virtual void Animate() {
         ResourceManager.Instance.GainWater(waterAmount);
+     
         HUDController.Instance.waterSliderTween.StopAll();
         HUDController.Instance.waterSliderTween.Pop();
         
@@ -52,8 +57,12 @@ public class Water : Resource
             backgroundRenderer.color = newCol;
         }).setEase(LeanTweenType.easeInCubic);
 
+        PlayAudio();
+        bubbleAudioSource.PlayDelayed(2f);
+    }
+
+    protected virtual void PlayAudio() {
         audioSource.clip = audioClips[UnityEngine.Random.Range(0, audioClips.Count)];
         audioSource.Play();
-        bubbleAudioSource.PlayDelayed(2f);
     }
 }
