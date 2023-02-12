@@ -16,8 +16,6 @@ public class InputManager : MonoBehaviour
 
     bool isNodeSelected = false;
 
-    [SerializeField]
-    AudioSource waterUsageAudioSource;
     void Awake()
     {
         _cam = Camera.main;
@@ -61,19 +59,17 @@ public class InputManager : MonoBehaviour
             if (!isNodeSelected)
             {
                 isNodeSelected = true;
-                //waterUsageAudioSource.Play();
+                HUDController.Instance.StartWatering();
             }
             _selectedNode.MoveToward(_cursorPos);
-            HUDController.Instance.StartWatering();
         }
         else
         {
             if (isNodeSelected)
             {
                 isNodeSelected = false;
-                //waterUsageAudioSource.Stop();
+                HUDController.Instance.StopWatering();
             }
-            HUDController.Instance.StopWatering();
         }
 
     }

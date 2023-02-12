@@ -1,14 +1,16 @@
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using TMPro;
 using Oozeling.Helper;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(AudioSource))]
 public class HUDController : Singleton<HUDController>
 {
+    static readonly int INVALID_TWEEN = -1; // Valid LeanTween IDs are always positive
 
     [SerializeField]
     GameObject endGameCard;
@@ -19,8 +21,9 @@ public class HUDController : Singleton<HUDController>
     [SerializeField]
     GameObject winScreen;
 
-    [SerializeField]
-    GameObject titleScreen;
+    AudioSource usingWaterAudioSource;
+    int usingWaterVolumeTweenId = -1;
+    float originalWaterUsageVolume;
 
     private float maxLengthValue;
 
@@ -46,9 +49,9 @@ public class HUDController : Singleton<HUDController>
     void Start()
     {
         resourceManager = ResourceManager.Instance;
-        
         maxLengthValue = GameInstanceController.Instance.Mode.startingMaxLength;
-        
+        usingWaterAudioSource = GetComponent<AudioSource>();
+        originalWaterUsageVolume = usingWaterAudioSource.volume;
         waterSliderTween = waterBarTransform.GetComponent<OTween>();
     }
 
@@ -105,7 +108,7 @@ public class HUDController : Singleton<HUDController>
             .setEase(LeanTweenType.easeOutBounce).setDelay(2f);
     }
     
-    public void EndGame(bool won)
+    public void EndGame(bool won, int debugMonsterIndex=-1)
     {
         endGameCard.SetActive(true);
         StopWatering();
@@ -113,10 +116,10 @@ public class HUDController : Singleton<HUDController>
         {
             // get most common index in  ResourceManager.Instance.powerups
             var most = 0;
-            if (ResourceManager.Instance.powerups.Count != 0)
-            {
-                most = ResourceManager.Instance.powerups.GroupBy(i=>i).OrderByDescending(grp=>grp.Count())
-                    .Select(grp=>grp.Key).First();
+            if (debugMonsterIndex != -1) {
+                most = debugMonsterIndex;
+            } else {
+                most = ResourceManager.Instance.GetMonsterIndex();
             }
             CamerasController.Instance.ExpandSeedCamera(() => {
                 SunflowerController.Instance.Bloom();
@@ -147,7 +150,12 @@ public class HUDController : Singleton<HUDController>
     {
         if (isWatering) return;
         isWatering = true;
-        
+        if (usingWaterVolumeTweenId != INVALID_TWEEN) {
+            LeanTween.cancel(usingWaterVolumeTweenId);
+            usingWaterVolumeTweenId = INVALID_TWEEN;
+        }
+        usingWaterAudioSource.volume = originalWaterUsageVolume;
+        usingWaterAudioSource.Play();
         // waterSliderTween.Jitter();
         wateringCanSprite.GetComponent<OTween>().Jitter(OnComplete: () =>
         {
@@ -168,6 +176,11 @@ public class HUDController : Singleton<HUDController>
         wateringCanSprite.transform.localRotation = Quaternion.identity;
         wateringCanSprite.GetComponent<OTween>().StopAll();
         isWatering = false;
+        usingWaterVolumeTweenId = LeanTween.value(gameObject, usingWaterAudioSource.volume, 0, 1f).setOnComplete(() => {
+            usingWaterAudioSource.Stop();
+        }).setOnUpdate((float value) => {
+            usingWaterAudioSource.volume = value;
+        }).id;
     }
     
 }

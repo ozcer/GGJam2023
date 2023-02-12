@@ -15,6 +15,9 @@ public class Water : Resource
     AudioSource audioSource;
 
     [SerializeField]
+    AudioSource bubbleAudioSource;
+
+    [SerializeField]
     List<AudioClip> audioClips;
     public override void OnCapture()
     {
@@ -33,5 +36,6 @@ public class Water : Resource
         });
         audioSource.clip = audioClips[UnityEngine.Random.Range(0, audioClips.Count)];
         audioSource.Play();
+        bubbleAudioSource.PlayDelayed(2f);
     }
 }
