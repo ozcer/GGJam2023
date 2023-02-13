@@ -1359,18 +1359,18 @@ MonoBehaviour:
       m_Image: {fileID: 0}
     - m_Text: Difficult
       m_Image: {fileID: 0}
-    - m_Text: Impossible (Testing Only)
+    - m_Text: Impossible (Testing)
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 8572946040980466340}
+        m_TargetAssemblyTypeName: StartController, Assembly-CSharp
+        m_MethodName: OnDifficulty
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1885,7 +1885,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b38d9cce63c66a24cb8d1c704228cc2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 8068943489627200771, guid: 81a58b8e26292ce4cb6a9c90f3ec3e98, type: 3}
   gameModes:
   - {fileID: 11400000, guid: 86c676b64fd780443a38b4ebca0765ec, type: 2}
   - {fileID: 11400000, guid: 6bf6dac851e111d4aa0a0d0e32e157bb, type: 2}
